@@ -8,7 +8,7 @@ Global:
   # evaluation is run every 10 iterations after the 0th iteration
   eval_batch_step: [ 0, 19 ]
   cal_metric_during_train: False
-  save_inference_dir:
+  save_inference_dir: ./output/inference/ser/
   use_visualdl: False
   seed: 2022
   infer_img: ppstructure/docs/kie/input/zh_val_42.jpg
@@ -33,7 +33,7 @@ Architecture:
     checkpoints:
     # one of base or vi
     mode: vi
-    num_classes: &num_classes 7
+    num_classes: &num_classes 19
 
 Loss:
   name: VQASerTokenLayoutLMLoss
@@ -55,7 +55,7 @@ Optimizer:
     
 PostProcess:
   name: VQASerTokenLayoutLMPostProcess
-  class_path: &class_path train_data/XFUND/class_list_xfun.txt
+  class_path: &class_path train_data/id_card_det/class_list_id_card.txt
 
 Metric:
   name: VQASerTokenMetric
@@ -64,9 +64,9 @@ Metric:
 Train:
   dataset:
     name: SimpleDataSet
-    data_dir: train_data/XFUND/zh_train/image
+    data_dir: train_data/id_card_det/train
     label_file_list: 
-      - train_data/XFUND/zh_train/train.json
+      - train_data/id_card_det/train.txt
     ratio_list: [ 1.0 ]
     transforms:
       - DecodeImage: # load image
@@ -103,9 +103,9 @@ Train:
 Eval:
   dataset:
     name: SimpleDataSet
-    data_dir: train_data/XFUND/zh_val/image
+    data_dir: train_data/id_card_det/val
     label_file_list:
-      - train_data/XFUND/zh_val/val.json
+      - train_data/id_card_det/val.txt
     transforms:
       - DecodeImage: # load image
           img_mode: RGB

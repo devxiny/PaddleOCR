@@ -136,9 +136,9 @@ Metric:
 Train:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/icdar2015/text_localization/
+    data_dir: ./train_data/det/train/
     label_file_list:
-      - ./train_data/icdar2015/text_localization/train_icdar2015_label.txt
+      - ./train_data/det/train.txt
     ratio_list: [1.0]
     transforms:
     - DecodeImage:
@@ -164,7 +164,7 @@ Train:
     - EastRandomCropData:
         size:
         - 960
-        - 960
+        - 640
         max_tries: 50
         keep_ratio: true
     - MakeBorderMap:
@@ -202,9 +202,9 @@ Train:
 Eval:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/icdar2015/text_localization/
+    data_dir: ./train_data/det/val/
     label_file_list:
-      - ./train_data/icdar2015/text_localization/test_icdar2015_label.txt
+      - ./train_data/det/val.txt
     transforms:
       - DecodeImage: # load image
           img_mode: BGR

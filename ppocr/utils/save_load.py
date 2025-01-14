@@ -20,6 +20,7 @@ import errno
 import os
 import pickle
 import json
+import time
 
 import paddle
 
@@ -218,7 +219,7 @@ def save_model(
     model_prefix = os.path.join(model_path, prefix)
 
     if prefix == "best_accuracy":
-        best_model_path = os.path.join(model_path, "best_model")
+        best_model_path = os.path.join(model_path, "best_model_" + str(time.time()))
         _mkdir_if_not_exist(best_model_path, logger)
 
     paddle.save(optimizer.state_dict(), model_prefix + ".pdopt")
