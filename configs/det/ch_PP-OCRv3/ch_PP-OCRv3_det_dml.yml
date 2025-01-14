@@ -108,9 +108,9 @@ Metric:
 Train:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/id_card_det/train/
+    data_dir: ./train_data/id_card/train/
     label_file_list:
-      - ./train_data/id_card_det/train.txt
+      - ./train_data/id_card/train.txt
     ratio_list: [1.0]
     transforms:
       - DecodeImage: # load image
@@ -151,9 +151,9 @@ Train:
 Eval:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/id_card_det/val/
+    data_dir: ./train_data/id_card/val/
     label_file_list:
-      - ./train_data/id_card_det/val.txt
+      - ./train_data/id_card/val.txt
     transforms:
       - DecodeImage: # load image
           img_mode: BGR

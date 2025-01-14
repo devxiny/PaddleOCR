@@ -44,12 +44,12 @@ python tools/train.py -c configs/det/ch_PP-OCRv3/ch_PP-OCRv3_det_student.yml \
 python tools/infer_det.py \
     -c configs/det/ch_PP-OCRv3/ch_PP-OCRv3_det_dml.yml \
     -o Global.checkpoints=./output/best_model_1730250591.6664228/model \
-    Global.infer_img=./train_data/id_card_det/test 
+    Global.infer_img=./train_data/id_card/test 
 
 python3 tools/infer/predict_det.py \
     -c configs/det/ch_PP-OCRv3/ch_PP-OCRv3_det_dml.yml \
     --det_model_dir=./output/inference/Student \
-    --image_dir=./train_data/id_card_det/test  \
+    --image_dir=./train_data/id_card/test  \
     --use_gpu=True
 ```
 # 关键信息提取
@@ -61,7 +61,7 @@ python tools/train.py -c configs/kie/vi_layoutxlm/ser_vi_layoutxlm_xfund_zh.yml
 python tools/infer_kie_token_ser.py \
     -c configs/kie/vi_layoutxlm/ser_vi_layoutxlm_xfund_zh.yml \
     -o Architecture.Backbone.checkpoints=./output/ser_vi_layoutxlm_xfund_zh/best_accuracy \
-    Global.infer_img=./train_data/id_card_det/test \
+    Global.infer_img=./train_data/id_card/test \
     Global.kie_det_model_dir=./output/inference/Student
 
 // 预测，使用默认DET模型
